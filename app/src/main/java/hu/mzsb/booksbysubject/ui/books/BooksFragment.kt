@@ -4,14 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import hu.mzsb.booksbysubject.databinding.FragmentBooksBinding
+import hu.mzsb.booksbysubject.ui.books.models.UiBook
+import kotlinx.android.synthetic.main.fragment_books.*
 import timber.log.Timber
 
-class BooksFragment : RainbowCakeFragment<BooksViewState, BooksViewModel>() {
+class BooksFragment : RainbowCakeFragment<BooksViewState, BooksViewModel>(), BooksAdapter.Listener {
+
+    private lateinit var adapter: BooksAdapter
 
     override fun provideViewModel() = getViewModelFromFactory()
 
@@ -26,20 +31,21 @@ class BooksFragment : RainbowCakeFragment<BooksViewState, BooksViewModel>() {
     ): View? {
         _binding = FragmentBooksBinding.inflate(inflater, container, false)
 
-        binding.tvToBookDetails.setOnClickListener {
-            findNavController().navigate(
-                BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment("BooksFragment")
-            )
+        adapter = BooksAdapter()
+        adapter.listener = this
+        binding.listBooks.adapter = adapter
+
+        binding.spSubjects.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                viewModel.loadBooks("localDummy1",false)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+            }
         }
 
         return binding.root
-    }
-
-    override fun onStart() {
-        super.onStart()
-
-        val fromFragmentName = requireArguments().getString("fromFragmentName") ?: "Start"
-        binding.tvToBookDetails.text = "navigate to Book details, prev was ${fromFragmentName}"
     }
 
     override fun onDestroyView() {
@@ -50,7 +56,13 @@ class BooksFragment : RainbowCakeFragment<BooksViewState, BooksViewModel>() {
     override fun render(viewState: BooksViewState) {
         when (viewState) {
             is Loading -> Timber.d("Loading")
-            is Initial -> Timber.d("Init")
+            is BooksReady -> adapter.submitList(viewState.books)
         }
+    }
+
+    override fun onBookClicked(book: UiBook) {
+        findNavController().navigate(
+            BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment(book.id)
+        )
     }
 }

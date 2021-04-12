@@ -20,12 +20,6 @@ class AboutFragment : Fragment() {
     ): View? {
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
 
-        binding.tvToBooks.setOnClickListener {
-            findNavController().navigate(
-                AboutFragmentDirections.actionAboutFragmentToBooksFragment("AboutFragment")
-            )
-        }
-
         return binding.root
     }
 

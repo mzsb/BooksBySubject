@@ -9,8 +9,8 @@ class NetworkDataSource {
     fun getBooksBySubject(subject: String): List<DomainBook> {
         //TODO list books by subject from network
         return listOf(
-            DomainBook("networkDummy1","networkDummy1","networkDummy1",false),
-            DomainBook("networkDummy2","networkDummy2","networkDummy2",true)
+            DomainBook("networkDummy1","networkDummy1","networkDummy1","networkDummy1",false),
+            DomainBook("networkDummy2","localDummy2","networkDummy2","networkDummy2",true)
         )
     }
 
@@ -20,6 +20,6 @@ class NetworkDataSource {
 
     fun getBookDetailsByBookId(bookId: String): DomainBookDetails {
         //TODO get book details by book id from network
-        return DomainBookDetails("networkDummy3","networkDummy3","networkDummy3","networkDummy3", "localDummy3", true)
+        return DomainBookDetails("networkDummy3","networkDummy3","networkDummy3","networkDummy3", "localDummy3","localDummy3", true)
     }
 }
