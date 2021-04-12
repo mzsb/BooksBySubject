@@ -6,9 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import co.zsmb.rainbowcake.base.RainbowCakeFragment
+import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
 import hu.mzsb.booksbysubject.databinding.FragmentBooksBinding
+import timber.log.Timber
 
-class BooksFragment : Fragment() {
+class BooksFragment : RainbowCakeFragment<BooksViewState, BooksViewModel>() {
+
+    override fun provideViewModel() = getViewModelFromFactory()
 
     private var _binding: FragmentBooksBinding? = null
 
@@ -40,5 +45,12 @@ class BooksFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun render(viewState: BooksViewState) {
+        when (viewState) {
+            is Loading -> Timber.d("Loading")
+            is Initial -> Timber.d("Init")
+        }
     }
 }
