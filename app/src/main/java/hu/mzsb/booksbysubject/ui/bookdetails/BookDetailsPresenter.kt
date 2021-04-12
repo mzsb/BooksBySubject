@@ -26,6 +26,7 @@ private fun DomainBookDetails.toUiBookDetails(): UiBookDetails {
         description = description,
         authorName = authorName,
         authorBio = authorBio,
+        imageUrl = imageUrl,
         isRead = isRead
     )
 }

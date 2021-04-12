@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BooksBySubject</string>
+    <string-array name="subjects">
+        <item>Love</item>
+        <item>Horror</item>
+    </string-array>
 </resources>

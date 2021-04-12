@@ -6,5 +6,6 @@ data class UiBookDetails(
     val description: String,
     val authorName: String,
     val authorBio: String,
+    val imageUrl: String,
     val isRead: Boolean
 )

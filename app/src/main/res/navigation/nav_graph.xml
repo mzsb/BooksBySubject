@@ -14,20 +14,14 @@
         <action
             android:id="@+id/action_booksFragment_to_bookDetailsFragment"
             app:destination="@id/bookDetailsFragment" />
-        <argument
-            android:name="fromFragmentName"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/bookDetailsFragment"
         android:name="hu.mzsb.booksbysubject.ui.bookdetails.BookDetailsFragment"
         android:label="BookDetails"
         tools:layout="@layout/fragment_book_details">
-        <action
-            android:id="@+id/action_bookDetailsFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
         <argument
-            android:name="fromFragmentName"
+            android:name="bookId"
             app:argType="string" />
     </fragment>
     <fragment
@@ -35,11 +29,5 @@
         android:name="hu.mzsb.booksbysubject.ui.about.AboutFragment"
         android:label="AboutFragment"
         tools:layout="@layout/fragment_about">
-        <action
-            android:id="@+id/action_aboutFragment_to_booksFragment"
-            app:destination="@id/booksFragment" />
-        <argument
-            android:name="fromFragmentName"
-            app:argType="string" />
     </fragment>
 </navigation>

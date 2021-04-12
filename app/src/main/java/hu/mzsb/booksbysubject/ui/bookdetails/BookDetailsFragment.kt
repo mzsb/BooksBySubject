@@ -25,20 +25,14 @@ class BookDetailsFragment : RainbowCakeFragment<BookDetailsViewState, BookDetail
     ): View? {
         _binding = FragmentBookDetailsBinding.inflate(inflater, container, false)
 
-        binding.tvToAbout.setOnClickListener {
-            findNavController().navigate(
-                BookDetailsFragmentDirections.actionBookDetailsFragmentToAboutFragment("BookDetailsFragment")
-            )
-        }
-
         return binding.root
     }
 
     override fun onStart() {
         super.onStart()
 
-        val fromFragmentName = requireArguments().getString("fromFragmentName")!!
-        binding.tvToAbout.text = "navigate to About from, prev was ${fromFragmentName}"
+        val bookId = requireArguments().getString("bookId")!!
+        viewModel.loadBookDetails(bookId)
     }
 
     override fun onDestroyView() {
@@ -49,7 +43,7 @@ class BookDetailsFragment : RainbowCakeFragment<BookDetailsViewState, BookDetail
     override fun render(viewState: BookDetailsViewState) {
         when (viewState) {
             is Loading -> Timber.d("Loading")
-            is Initial -> Timber.d("Init")
+            is BookDetailsReady -> binding.tvTitle.text = viewState.bookDetails.title
         }
     }
 
