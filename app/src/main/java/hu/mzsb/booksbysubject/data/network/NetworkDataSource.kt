@@ -13,6 +13,7 @@ import retrofit2.HttpException
 import retrofit2.Response
 import timber.log.Timber
 import java.io.IOException
+import java.lang.Exception
 import java.util.*
 import javax.inject.Inject
 
@@ -58,7 +59,10 @@ class NetworkDataSource @Inject constructor(
 
     suspend fun getBookDetailsByBookId(bookId: String): DomainBookDetails = withIOContext {
         try {
-            val bookDetailsResult = bookDetailsApi.getBookDetailsById(bookId)
+            var bookDetailsResult = bookDetailsApi.getBookDetailsById(bookId)
+            if(bookDetailsResult.location != null){
+                bookDetailsResult = bookDetailsApi.getBookDetailsById(bookDetailsResult.location!!.split("/").last())
+            }
             val authorDetailsResult = authorDetailsApi.getAuthorDetailsById(bookDetailsResult.authors!!.map { author -> author.author }.first().key.split("/").last())
             DomainBookDetails(
                 title = bookDetailsResult.title,
@@ -72,6 +76,10 @@ class NetworkDataSource @Inject constructor(
             Timber.d(e)
             DomainBookDetails("","","","","",false)
         } catch (e: HttpException) {
+            Timber.d("Network fetch failed")
+            Timber.d(e)
+            DomainBookDetails("","","","","",false)
+        } catch (e: Exception) {
             Timber.d("Network fetch failed")
             Timber.d(e)
             DomainBookDetails("","","","","",false)

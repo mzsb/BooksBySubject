@@ -4,6 +4,7 @@ data class BookDetailsResult(val title: String,
                              val description: Description?,
                              val covers: List<Int>?,
                              val authors: List<AuthorHolder>?,
-                             val isRead: Boolean?)
+                             val isRead: Boolean?,
+                             val location: String?)
 
 data class AuthorHolder(val author: Author)
