@@ -15,7 +15,7 @@ class LocalModule {
 
     @Provides
     @Singleton
-    fun provideCityDao(db: AppDatabase): BookDao = db.bookDao()
+    fun provideBookDao(db: AppDatabase): BookDao = db.bookDao()
 
     @Provides
     @Singleton

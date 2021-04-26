@@ -3,7 +3,6 @@ package hu.mzsb.booksbysubject.data.network
 import dagger.Module
 import dagger.Provides
 import hu.mzsb.booksbysubject.BuildConfig
-import io.swagger.client.api.BookDetailsApi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

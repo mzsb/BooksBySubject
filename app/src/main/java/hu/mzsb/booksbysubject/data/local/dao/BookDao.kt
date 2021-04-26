@@ -12,7 +12,7 @@ interface BookDao {
     suspend fun getBookById(bookId: String): RoomBook
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertBook(book: RoomBook) : Void
+    suspend fun insertBook(book: RoomBook)
 
     @Query("UPDATE books SET isRead=:isRead WHERE id = :bookId")
     suspend fun updateBookRead(bookId: String, isRead: Boolean)

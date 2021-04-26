@@ -1,4 +1,4 @@
-package io.swagger.client.api
+package hu.mzsb.booksbysubject.data.network
 
 import hu.mzsb.booksbysubject.data.network.model.BookDetailsRequest
 import hu.mzsb.booksbysubject.data.network.model.BookDetailsResult
