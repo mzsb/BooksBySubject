@@ -1,10 +1,14 @@
 package hu.mzsb.booksbysubject.data.local
 
+import hu.mzsb.booksbysubject.data.local.dao.BookDao
 import hu.mzsb.booksbysubject.domain.models.DomainBook
 import hu.mzsb.booksbysubject.domain.models.DomainBookDetails
+import javax.inject.Inject
 
 //TODO inject Dao
-class LocalDataSource {
+class LocalDataSource @Inject constructor(
+    private val bookDao: BookDao
+) {
 
     fun getBooksBySubjectAndRead(subject: String, isRead: Boolean): List<DomainBook> {
         //TODO list books by subject and read from database

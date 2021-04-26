@@ -12,9 +12,9 @@ import javax.inject.Singleton
         modules = [
             RainbowCakeModule::class,
             ViewModelModule::class,
-            ApplicationModule::class,
             NetworkModule::class,
-            LocalModule::class
+            LocalModule::class,
+            ApplicationModule::class
         ]
 )
 interface AppComponent : RainbowCakeComponent
