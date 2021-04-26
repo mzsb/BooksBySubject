@@ -11,8 +11,8 @@ class BooksInteractor @Inject constructor(
     private val networkDataSource: NetworkDataSource
 ) {
 
-    fun getBooksBySubjectAndRead(subject: String, isRead: Boolean): List<DomainBook> {
+    suspend fun getBooksBySubjectAndRead(subject: String, isRead: Boolean): List<DomainBook> {
         //TODO list books by subject and read from database or network
-        return localDataSource.getBooksBySubjectAndRead(subject, isRead)
+        return networkDataSource.getBooksBySubject(subject)
     }
 }

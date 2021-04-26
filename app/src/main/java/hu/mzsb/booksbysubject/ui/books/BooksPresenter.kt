@@ -12,9 +12,9 @@ import javax.inject.Inject
 class BooksPresenter @Inject constructor(
     private val booksInteractor: BooksInteractor
 ) {
-    suspend fun getBooksBySubjectAndRead(subject: String, isRead: Boolean): List<UiBook> = withIOContext {
+    suspend fun getBooksBySubjectAndRead(subject: String, isRead: Boolean): List<UiBook> =
         booksInteractor.getBooksBySubjectAndRead(subject, isRead).map { it.toUiBook() }
-    }
+
 }
 
 private fun DomainBook.toUiBook(): UiBook {

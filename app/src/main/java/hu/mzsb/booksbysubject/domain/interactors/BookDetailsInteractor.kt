@@ -10,13 +10,13 @@ class BookDetailsInteractor @Inject constructor(
     private val networkDataSource: NetworkDataSource
 ) {
 
-    fun setBookRead(bookId: String, isRead: Boolean) {
+    suspend fun setBookRead(bookId: String, isRead: Boolean) {
         //TODO set book read by book id in database or on network
-        localDataSource.getBooksBySubjectAndRead(bookId, isRead)
+        networkDataSource.setBookRead(bookId, isRead)
     }
 
-    fun getBookDetailsByBookId(bookId: String): DomainBookDetails {
+    suspend fun getBookDetailsByBookId(bookId: String): DomainBookDetails {
         //TODO get book details by book id from database or network
-        return localDataSource.getBookDetailsByBookId(bookId)
+        return networkDataSource.getBookDetailsByBookId(bookId)
     }
 }

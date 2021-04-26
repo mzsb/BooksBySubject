@@ -37,7 +37,7 @@ class BooksFragment : RainbowCakeFragment<BooksViewState, BooksViewModel>(), Boo
 
         binding.spSubjects.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                viewModel.loadBooks("localDummy1",false)
+                viewModel.loadBooks(parent.getItemAtPosition(position).toString(),false)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {

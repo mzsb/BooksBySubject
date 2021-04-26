@@ -9,19 +9,15 @@ import javax.inject.Inject
 class BookDetailsPresenter @Inject constructor(
     private val bookDetailsInteractor: BookDetailsInteractor
 ) {
-
-    suspend  fun setBookRead(bookId: String, isRead: Boolean) = withIOContext {
+    suspend fun setBookRead(bookId: String, isRead: Boolean) =
         bookDetailsInteractor.setBookRead(bookId, isRead)
-    }
 
-    suspend fun getBookDetailsByBookId(bookId: String): UiBookDetails = withIOContext {
+    suspend fun getBookDetailsByBookId(bookId: String): UiBookDetails =
         bookDetailsInteractor.getBookDetailsByBookId(bookId).toUiBookDetails()
-    }
 }
 
 private fun DomainBookDetails.toUiBookDetails(): UiBookDetails {
     return UiBookDetails(
-        id = id,
         title = title,
         description = description,
         authorName = authorName,
