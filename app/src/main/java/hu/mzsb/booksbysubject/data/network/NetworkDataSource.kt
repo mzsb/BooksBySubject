@@ -3,14 +3,9 @@ package hu.mzsb.booksbysubject.data.network
 import android.R
 import co.zsmb.rainbowcake.withIOContext
 import hu.mzsb.booksbysubject.data.network.model.BookDetailsRequest
-import hu.mzsb.booksbysubject.data.network.model.BooksResult
 import hu.mzsb.booksbysubject.domain.models.DomainBook
 import hu.mzsb.booksbysubject.domain.models.DomainBookDetails
-import io.swagger.client.api.BookDetailsApi
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.HttpException
-import retrofit2.Response
 import timber.log.Timber
 import java.io.IOException
 import java.lang.Exception
