@@ -1,6 +1,5 @@
 package hu.mzsb.booksbysubject.ui.bookdetails
 
-import co.zsmb.rainbowcake.withIOContext
 import hu.mzsb.booksbysubject.domain.interactors.BookDetailsInteractor
 import hu.mzsb.booksbysubject.domain.models.DomainBookDetails
 import hu.mzsb.booksbysubject.ui.bookdetails.models.UiBookDetails
@@ -16,13 +15,13 @@ class BookDetailsPresenter @Inject constructor(
         bookDetailsInteractor.getBookDetailsByBookId(bookId).toUiBookDetails()
 }
 
-private fun DomainBookDetails.toUiBookDetails(): UiBookDetails {
+fun DomainBookDetails.toUiBookDetails(): UiBookDetails {
     return UiBookDetails(
         title = title,
         description = description,
         authorName = authorName,
         authorBio = authorBio,
-        imageUrl = imageUrl,
+        covers = covers,
         isRead = isRead
     )
 }

@@ -20,7 +20,7 @@ fun RoomBook.toDomainBookDetails(): DomainBookDetails {
         description = description,
         authorName = authorName,
         authorBio = authorBio,
-        imageUrl = imageUrl,
+        covers = covers,
         isRead = isRead
     )
 }

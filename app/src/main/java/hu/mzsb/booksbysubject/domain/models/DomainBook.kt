@@ -7,5 +7,5 @@ data class DomainBook(
     val subject: String,
     val title: String,
     val authorName: String,
-    val isRead: Boolean
+    var isRead: Boolean
 )

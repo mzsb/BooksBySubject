@@ -14,13 +14,13 @@ import javax.inject.Singleton
 class MockNetworkModule {
     @Provides
     @Singleton
-    fun provideBookDetailsApi() = MockBookDetailsApi()
+    fun provideBookDetailsApi(): BookDetailsApi = MockBookDetailsApi()
 
     @Provides
     @Singleton
-    fun provideBooksApi() = MockBooksApi()
+    fun provideBooksApi(): BooksApi = MockBooksApi()
 
     @Provides
     @Singleton
-    fun provideAuthorDetailsApi() = MockAuthorDetailsApi()
+    fun provideAuthorDetailsApi(): AuthorDetailsApi = MockAuthorDetailsApi()
 }

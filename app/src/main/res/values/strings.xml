@@ -1,7 +1,23 @@
 <resources>
     <string name="app_name">BooksBySubject</string>
+    <string name="title_book_details">Book</string>
+    <string name="title_books">Books</string>
+    <string name="title_about">About</string>
+    <string name="by">by</string>
+    <string name="coverURL">https://covers.openlibrary.org/b/id/%1$s-L.jpg</string>
+    <string name="internet_not_available">Internet may not be available</string>
+    <string name="anonymous">Anonymous</string>
+    <string name="not_available_description">Not available description</string>
+    <string name="not_available_bio">Not available bio</string>
+    <string name="about">A BooksBySubject egy könyv listázó Android alkalmazás, amely az OpenLibrary könyv adatbázisra épül. Az alkalmazással a felhasználók téma alapján listázhatják ki könyvek címeit és azok szerzőit az adatbázisból. A listázott könyvekről részletes adatokat tekinthetnek meg, úgymint a könyv leírása és borítója, valamint a szerzőjének életrajza. Az egyes könyveket olvasottnak jelölhetik meg. A listázáskor beállíthatják, hogy az olvasottnak jelölt könyvek megjelenjenek-e a listázott könyvek között. A felhasználók továbbá egy leírást is megtekinthetnek az alkalmazásról.</string>
+    <string name="try_refresh">Try to refresh when the internet connection becomes available.</string>
     <string-array name="subjects">
+        <item>Architecture</item>
         <item>Love</item>
+        <item>Film</item>
         <item>Horror</item>
+        <item>Music</item>
+        <item>Thriller</item>
+        <item>Poetry</item>
     </string-array>
 </resources>

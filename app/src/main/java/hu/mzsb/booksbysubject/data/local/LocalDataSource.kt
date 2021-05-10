@@ -7,27 +7,32 @@ import hu.mzsb.booksbysubject.domain.models.DomainBook
 import hu.mzsb.booksbysubject.domain.models.DomainBookDetails
 import java.util.*
 import javax.inject.Inject
+import kotlin.collections.HashMap
 
 //TODO inject Dao
 class LocalDataSource @Inject constructor(
     private val bookDao: BookDao
 ) {
-    suspend fun insertBook(book: DomainBook, bookDetails: DomainBookDetails) = withIOContext {
-        bookDao.insertBook(
+    suspend fun insertBooks(books: HashMap<DomainBook, DomainBookDetails>) = withIOContext {
+        bookDao.insertBooks(books.map { pair ->
             RoomBook(
-                id = book.id,
-                title = book.title,
-                subject = book.subject,
-                authorName = book.authorName,
-                authorBio = bookDetails.authorBio,
-                imageUrl = bookDetails.imageUrl,
-                description = bookDetails.description,
-                isRead = bookDetails.isRead)
-        )
+                    id = pair.key.id,
+                    title = pair.key.title,
+                    subject = pair.key.subject,
+                    authorName = pair.key.authorName,
+                    authorBio = pair.value.authorBio,
+                    covers = pair.value.covers,
+                    description = pair.value.description,
+                    isRead = pair.key.isRead)
+        })
     }
 
     suspend fun getBooksBySubjectAndRead(subject: String, isRead: Boolean): List<DomainBook> = withIOContext {
         bookDao.getBooksBySubjectAndRead(subject.toLowerCase(Locale.ROOT), isRead).map(RoomBook::toDomainBook)
+    }
+
+    suspend fun getBooksBySubject(subject: String): List<DomainBook> = withIOContext {
+        bookDao.getBooksBySubject(subject.toLowerCase(Locale.ROOT)).map(RoomBook::toDomainBook)
     }
 
     suspend fun setBookRead(bookId: String, isRead: Boolean) = withIOContext {
@@ -37,4 +42,7 @@ class LocalDataSource @Inject constructor(
     suspend fun getBookDetailsByBookId(bookId: String): DomainBookDetails = withIOContext {
         bookDao.getBookById(bookId).toDomainBookDetails()
     }
+
+    suspend fun getBookRead(id: String) =
+            bookDao.getBookRead(id)
 }

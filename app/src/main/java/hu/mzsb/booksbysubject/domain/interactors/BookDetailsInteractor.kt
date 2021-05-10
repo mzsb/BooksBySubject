@@ -14,19 +14,17 @@ class BookDetailsInteractor @Inject constructor(
 ) {
 
     suspend fun setBookRead(bookId: String, isRead: Boolean) {
+        localDataSource.setBookRead(bookId, isRead)
         if(context.isInternetAvailable) {
             networkDataSource.setBookRead(bookId, isRead)
-        }
-        else {
-            localDataSource.setBookRead(bookId, isRead)
         }
     }
 
     suspend fun getBookDetailsByBookId(bookId: String) =
-        if(context.isInternetAvailable) {
-            networkDataSource.getBookDetailsByBookId(bookId)
-        }
-        else {
-            localDataSource.getBookDetailsByBookId(bookId)
-        }
+            if(context.isInternetAvailable) {
+                networkDataSource.getBookDetailsByBookId(bookId).also { it.isRead = localDataSource.getBookRead(bookId) ?: false }
+            }
+            else{
+                localDataSource.getBookDetailsByBookId(bookId)
+            }
 }

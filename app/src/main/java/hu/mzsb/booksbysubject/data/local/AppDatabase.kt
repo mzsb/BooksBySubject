@@ -7,7 +7,7 @@ import hu.mzsb.booksbysubject.data.local.models.*
 
 @Database(
     entities = [RoomBook::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

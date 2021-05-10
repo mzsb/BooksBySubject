@@ -1,6 +1,7 @@
 package hu.mzsb.booksbysubject.ui.books
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +26,13 @@ class BooksAdapter : ListAdapter<UiBook, BooksAdapter.BookViewHolder>(BookCompar
         val book = getItem(position)
 
         holder.binding.title.text = book.title
-        holder.binding.authorName.text = book.authorName
+        holder.binding.authorName.text = if(book.authorName.isNotEmpty()) book.authorName else "Anonymous"
+        if(book.isRead){
+            holder.binding.ivIsRead.visibility = View.VISIBLE
+        }
+        else {
+            holder.binding.ivIsRead.visibility = View.INVISIBLE
+        }
         holder.binding.root.setOnClickListener {
             listener?.onBookClicked(book)
         }
