@@ -1,5 +1,6 @@
 package hu.mzsb.booksbysubject.ui.books
 
+import android.R.attr.name
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.Handler
@@ -14,6 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import co.zsmb.rainbowcake.base.RainbowCakeFragment
 import co.zsmb.rainbowcake.dagger.getViewModelFromFactory
+import com.google.firebase.analytics.FirebaseAnalytics
 import hu.mzsb.booksbysubject.R
 import hu.mzsb.booksbysubject.databinding.FragmentBooksBinding
 import hu.mzsb.booksbysubject.ui.books.models.UiBook
@@ -101,6 +103,7 @@ class BooksFragment : RainbowCakeFragment<BooksViewState, BooksViewModel>(), Boo
                     override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                         subject = parent.getItemAtPosition(position).toString()
                         sharedPreferences.edit().putString("subject", subject).apply()
+
                         getBooks()
                     }
 

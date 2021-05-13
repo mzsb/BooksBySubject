@@ -33,6 +33,10 @@ class AboutFragment : Fragment() {
             )
         }
 
+        binding.btCrash.setOnClickListener {
+            throw RuntimeException("Test Crash")
+        }
+
         return binding.root
     }
 

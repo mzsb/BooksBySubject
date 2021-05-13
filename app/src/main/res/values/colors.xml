@@ -11,4 +11,5 @@
     <color name="primary">#518ABE</color>
     <color name="primary_light">#B3518ABE</color>
     <color name="defaultBackground">#E1DCC5</color>
+    <color name="crash">#CC4036</color>
 </resources>

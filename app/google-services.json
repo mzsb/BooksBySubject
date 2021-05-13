@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "148819181089",
+    "project_id": "booksbysubject",
+    "storage_bucket": "booksbysubject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148819181089:android:2d748ac247c7a7c6442d60",
+        "android_client_info": {
+          "package_name": "hu.mzsb.booksbysubject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148819181089-27egt7206skohjtsqc7dlgj6jdrfdafn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaZd-jz7IgtjWiobqtD4yVfmdZa2j2M7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148819181089-27egt7206skohjtsqc7dlgj6jdrfdafn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

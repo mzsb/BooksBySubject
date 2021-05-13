@@ -37,6 +37,22 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_crash"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:gravity="end"
+                android:padding="0dp"
+                android:layout_marginStart="6dp"
+                app:backgroundTint="#00FFFFFF"
+                app:icon="@drawable/ic_crash"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:iconTint="@color/crash"
+                android:visibility="invisible"/>
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/bt_back_to_books_fragment"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="24dp"
